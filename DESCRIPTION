@@ -1,0 +1,31 @@
+Package: agreeR
+Title: Agreement Analysis for Method Comparison Studies
+Version: 0.1.0
+Authors@R: 
+    person(given = "Stuart",
+    family = "Guppy",
+    email = "sguppy-91@users.noreply.github.com",
+    role = c("aut", "cre", "cph"))
+Description: Estimates agreement between two measurement methods using
+  Bland-Altman limits of agreement, ordinary least products regression,
+  and equivalence testing (TOST). Designed for single-measurement
+  per-subject method comparison studies common in sport and exercise
+  science. Not yet extensively validated; use with care and check
+  assumptions.
+License: MIT
+Encoding: UTF-8
+Imports:
+    boot,
+    dplyr,
+    purrr,
+    tidyr,
+    tibble
+Roxygen: list(markdown = TRUE, r6 = FALSE)
+Suggests: 
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown
+URL: https://github.com/sguppy-91/agreeR
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+Config/roxygen2/version: 8.1.1
