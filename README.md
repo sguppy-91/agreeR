@@ -63,7 +63,7 @@ results
 agreeR is under active development and should be considered experimental software as a result. Although the methods included in the package have been checked against the source literature outlined below, the package has been developed for my own research workflows and may contain implementation errors. Any use of the package should include independently verifying that the methods and results are appropriate for their application and consistent with the relevant source literature.
 
 ## AI Disclosure
-I use generative AI (Mistral Large 4, Mistral AI; GLM 5.3, Z.ai, hosted by Mistral) as an agentic coding tool during package development. I develop the underlying statistical approach and initial implementation based on the references below before using these tools to assist with code refininement and debugging. AI-generated suggestions are reviewed and tested before incorporation into the package.
+I use generative AI (Mistral Large 4, Mistral AI; GLM 5.3, Z.ai, hosted by Mistral) as an agentic coding tool during package development. I develop the underlying statistical approach and initial implementation based on the references below before using these tools to assist with code refinement and debugging. AI-generated suggestions are reviewed and tested before incorporation into the package.
 
 ## References
 ### Limits of agreement
