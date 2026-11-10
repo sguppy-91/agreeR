@@ -4,7 +4,15 @@
 \alias{ba_loa}
 \title{Bland-Altman Agreement Analysis}
 \usage{
-ba_loa(data, reference, comparison, conf = 0.95, R = 2000, na_rm = TRUE)
+ba_loa(
+  data,
+  reference,
+  comparison,
+  conf = 0.95,
+  R = 2000,
+  na_rm = TRUE,
+  ci_type = "bca"
+)
 }
 \arguments{
 \item{data}{A data frame containing the paired measurements from both methods.}
@@ -18,6 +26,9 @@ ba_loa(data, reference, comparison, conf = 0.95, R = 2000, na_rm = TRUE)
 \item{R}{Number of bootstrap replicates passed to \code{\link[boot:boot]{boot::boot()}}.}
 
 \item{na_rm}{Logical. If \code{TRUE}, rows with missing values are dropped before analysis.}
+
+\item{ci_type}{Type of bootstrap confidence interval: \code{"perc"} (percentile) or \code{"bca"}
+(bias-corrected and accelerated, the default), passed to \code{\link[boot:boot.ci]{boot::boot.ci()}}.}
 }
 \value{
 A tibble with one row per estimate (mean bias, lower LoA, upper LoA)

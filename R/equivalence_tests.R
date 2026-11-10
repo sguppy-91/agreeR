@@ -7,20 +7,20 @@
 #'
 #' @details
 #' The equivalence bounds (`lower` and `upper`) are absolute differences on the scale of measurement
-#' and must be specified *a priori* on subtantive grounds (e.g., the smallest difference
+#' and must be specified *a priori* on substantive grounds (e.g., the smallest difference
 #' considered practically meaningful), not chosen after inspecting the data.
 #'
 #' The TOST procedure is equivalent to checking whether the confidence interval for the
 #' mean difference lies inside the equivalence bounds. For a conventional type I error
 #' rate of 5% per one-sided test, this corresponds to a 90% confidence interval, which is
-#' why `conf` defaults to .90; chaning `conf` changes the implied error rate (e.g., `conf = 0.95`
+#' why `conf` defaults to .90; changing `conf` changes the implied error rate (e.g., `conf = 0.95`
 #' corresponds to 2.5% per one-sided test).
 #'
-#' The confidence interval is esimtated by bootstrap resampling of the paired differences with `R`
+#' The confidence interval is estimated by bootstrap resampling of the paired differences with `R`
 #' replicates. The default `ci_type = "bca"` gives bias-corrected and accelerated intervals,
-#' which are preferred when the distribution of differences are skewed; `perc` gives ordinary
-#' percentile intervals. BCa intervals can be unstable with very small samples, in which case
-#' `ci_type = 'perc'` may be a safer choice.
+#' which are preferred when the distribution of differences is skewed; `ci_type = "perc"` gives
+#' ordinary percentile intervals. BCa intervals can be unstable with very small samples,
+#' in which case `ci_type = "perc"` may be a safer choice.
 #'
 #' Measurements must be paired, with a single measurement per participant per method.
 #'
@@ -29,10 +29,10 @@
 #' @param comparison Character string naming the column with the comparison method measurements.
 #' @param lower Numeric. Lower equivalence bound for the mean difference, in the units of measurement.
 #' @param upper Numeric. Upper equivalence bound for the mean difference, in the units of measurement.
-#' @param conf Confidence interval of the bootstrap confidence interval. Defaults to 0.90.
+#' @param conf Confidence level of the bootstrap confidence interval. Defaults to 0.90.
 #' @param R Number of bootstrap replicates passed to [boot::boot()].
 #' @param ci_type Character. Type of bootstrap confidence interval: `"bca"` (default) or `"perc"`.
-#' #' @param na_rm Logical. If `TRUE`, rows with missing values are dropped before analysis
+#' @param na_rm Logical. If `TRUE`, rows with missing values are dropped before analysis
 #'
 #' @return A tibble with one row and the following columns:
 #'   `metric` ("Mean difference"), `estimate` (the mean difference,

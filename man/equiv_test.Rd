@@ -27,12 +27,13 @@ equiv_test(
 
 \item{upper}{Numeric. Upper equivalence bound for the mean difference, in the units of measurement.}
 
-\item{conf}{Confidence interval of the bootstrap confidence interval. Defaults to 0.90.}
+\item{conf}{Confidence level of the bootstrap confidence interval. Defaults to 0.90.}
 
 \item{R}{Number of bootstrap replicates passed to \code{\link[boot:boot]{boot::boot()}}.}
 
-\item{ci_type}{Character. Type of bootstrap confidence interval: \code{"bca"} (default) or \code{"perc"}.
-#' @param na_rm Logical. If \code{TRUE}, rows with missing values are dropped before analysis}
+\item{na_rm}{Logical. If \code{TRUE}, rows with missing values are dropped before analysis}
+
+\item{ci_type}{Character. Type of bootstrap confidence interval: \code{"bca"} (default) or \code{"perc"}.}
 }
 \value{
 A tibble with one row and the following columns:
@@ -50,20 +51,20 @@ equivalence bounds.
 }
 \details{
 The equivalence bounds (\code{lower} and \code{upper}) are absolute differences on the scale of measurement
-and must be specified \emph{a priori} on subtantive grounds (e.g., the smallest difference
+and must be specified \emph{a priori} on substantive grounds (e.g., the smallest difference
 considered practically meaningful), not chosen after inspecting the data.
 
 The TOST procedure is equivalent to checking whether the confidence interval for the
 mean difference lies inside the equivalence bounds. For a conventional type I error
 rate of 5\% per one-sided test, this corresponds to a 90\% confidence interval, which is
-why \code{conf} defaults to .90; chaning \code{conf} changes the implied error rate (e.g., \code{conf = 0.95}
+why \code{conf} defaults to .90; changing \code{conf} changes the implied error rate (e.g., \code{conf = 0.95}
 corresponds to 2.5\% per one-sided test).
 
-The confidence interval is esimtated by bootstrap resampling of the paired differences with \code{R}
+The confidence interval is estimated by bootstrap resampling of the paired differences with \code{R}
 replicates. The default \code{ci_type = "bca"} gives bias-corrected and accelerated intervals,
-which are preferred when the distribution of differences are skewed; \code{perc} gives ordinary
-percentile intervals. BCa intervals can be unstable with very small samples, in which case
-\code{ci_type = 'perc'} may be a safer choice.
+which are preferred when the distribution of differences is skewed; \code{ci_type = "perc"} gives
+ordinary percentile intervals. BCa intervals can be unstable with very small samples,
+in which case \code{ci_type = "perc"} may be a safer choice.
 
 Measurements must be paired, with a single measurement per participant per method.
 }

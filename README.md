@@ -25,7 +25,7 @@ library(agreeR)
 
 # Limits of agreement with bias corrected and accelerated 95% confidence intervals 
 set.seed(123)
-results <- bla(
+results <- ba_loa(
   data = data,
   reference = "force_plate",
   comparison = "video",

@@ -4,7 +4,15 @@
 \alias{olp}
 \title{Ordinary Least Products Regression}
 \usage{
-olp(data, reference, comparison, conf = 0.95, R = 2000, na_rm = TRUE)
+olp(
+  data,
+  reference,
+  comparison,
+  conf = 0.95,
+  R = 2000,
+  na_rm = TRUE,
+  ci_type = "bca"
+)
 }
 \arguments{
 \item{data}{A data frame containing the paired measurements from both methods.}
@@ -18,9 +26,12 @@ olp(data, reference, comparison, conf = 0.95, R = 2000, na_rm = TRUE)
 \item{R}{Number of bootstrap replicates passed to \code{\link[boot:boot]{boot::boot()}}.}
 
 \item{na_rm}{Logical. If \code{TRUE}, rows with missing values are dropped before analysis.}
+
+\item{ci_type}{Type of bootstrap confidence interval: \code{"perc"} (percentile) or \code{"bca"}
+(bias-corrected and accelerated, the default), passed to \code{\link[boot:boot.ci]{boot::boot.ci()}}.}
 }
 \value{
-A tibble with one row per parameter (slope, intercept) giving the point estimate and its BCa confidence interval.
+A tibble with one row per parameter (slope, intercept) giving the point estimate and its confidence interval.
 }
 \description{
 Computes the ordinary least products regression slope and intercept
