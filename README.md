@@ -61,3 +61,7 @@ agreeR is under active development and should be considered experimental softwar
 - Schuirmann, D. J. (1987). A comparison of the two one-sided tests procedure and the power approach for assessing equivalence of average bioavailability. _Journal of Pharmacokinetics and Biopharmaceutics_, _15_(6), 657-680.
 - Dixon, P. M., Saint-Maurice, P. F., Kim, Y., Hibbing, P., Bai, Y., & Welk, G. J. (2018). A primer on the use of equivalence testing for evaluating measurement agreement. _Medicine and Science in Sports and Exercise_, _50_(4), 837-845.
 - Lakens, D. (2017). Equivalence tests: A practical primer for t tests, correlations, and meta-analyses. _Social Psychological and Personality Science_, _8_(4), 355-362.
+
+### Bootstrap resampling
+- Davison, A. C., & Hinkley, D. (1997). _Bootstrap methods and their application_. Cambridge University Press
+-  Efron, B., & Hastie, T. (2016). Bootstrap confidence intervals. In _Computer Age Statistical Inference: Algorithms, evidence, and data science_ (1st ed., pp. 181-207). Cambridge University Press

@@ -15,7 +15,7 @@
 #'   giving the point estimate and its confidence interval.
 #'
 #' @export
-bla <- function(
+ba_loa <- function(
   data,
   reference,
   comparison,

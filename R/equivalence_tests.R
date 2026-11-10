@@ -6,7 +6,8 @@ equiv_test <- function(
   upper,
   conf = 0.90,
   R = 2000,
-  na_rm = TRUE
+  na_rm = TRUE,
+  ci_type = "bca"
 ) {
   df <- tidyr::tibble(
     diff = data[[reference]] - data[[comparison]]
@@ -20,6 +21,10 @@ equiv_test <- function(
   if (lower >= upper) {
     stop("lower must be less than upper.")
   }
+
+  ci_type <- match.arg(ci_type, c("perc", "bca"))
+  # boot.ci names its result component "percent" for type = "perc"
+  ci_component <- switch(ci_type, perc = "percent", bca = "bca")
 
   stat <- function(d, i) {
     x <- d$diff[i]
@@ -35,9 +40,9 @@ equiv_test <- function(
 
   ci <- boot::boot.ci(
     boot_out,
-    type = "bca",
+    type = ci_type,
     conf = conf
-  )$bca[4:5]
+  )[[ci_component]][4:5]
 
   estimate <- boot_out$t0[[1]]
 
