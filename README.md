@@ -27,13 +27,13 @@ library(agreeR)
 # Simulated paired measurements from a reference device and comparison methods
 set.seed(123)
 n <- 40
-latent <- rnorm(n, mean = 100, sd = 10)
+sim <- rnorm(n, mean = 100, sd = 10)
 data <- data.frame(
-  force_plate = latent + rnorm(n, 2, 1),
-  smartphone  = latent + rnorm(n, 5, 3),
-  jump_mat    = latent + rnorm(n, -1, 2),
-  mocap       = latent + rnorm(n, 0, 0.5),
-  LPT         = latent + rnorm(n, 0.1, 0.4)
+  force_plate = sim + rnorm(n, 2, 1),
+  smartphone  = sim + rnorm(n, 5, 3),
+  jump_mat    = sim + rnorm(n, -1, 2),
+  mocap       = sim + rnorm(n, 0, 0.5),
+  LPT         = sim + rnorm(n, 0.1, 0.4)
 )
 
 # Limits of agreement with bias corrected and accelerated 95% confidence intervals 
@@ -42,7 +42,7 @@ results <- ba_loa(
   data = data,
   reference = "force_plate",
   comparison = "smartphone",
-  R = 10000
+  R = 2000
 )
 
 results
@@ -53,7 +53,7 @@ results <- olp(
   data = data,
   reference = "force_plate",
   comparison = "jump_mat",
-  R = 10000
+  R = 2000
 )
 
 results
@@ -66,17 +66,17 @@ results <- equiv_test(
   comparison = "LPT",
   lower = -0.05,
   upper = 0.05,
-  R = 10000
+  R = 2000
 )
 
 results
 ```
 
 ## Development Status
-agreeR is under active development and should be considered experimental software as a result. Although the methods included in the package have been checked against the source literature outlined below, the package has been developed for my own research workflows and may contain implementation errors. Any use of the package should include independently verifying that the methods and results are appropriate for their application and consistent with the relevant source literature.
+agreeR is under development and should be considered experimental software as a result. Although the methods included in the package have been checked against the source literature outlined below, the package has been developed for my own research workflows and may contain implementation errors. Any use of the package should include independently verifying that the methods and results are appropriate for their application and consistent with the relevant source literature.
 
 ## AI Disclosure
-I use generative AI (Mistral Large 4, Mistral AI; GLM 5.3, Z.ai, hosted by Mistral) as an agentic coding tool during package development. I develop the underlying statistical approach and initial implementation based on the references below before using these tools to assist with code refinement, debugging, and documentation. AI-generated suggestions are reviewed and tested before incorporation into the package.
+I use generative AI (Mistral Large 4, Mistral AI) as an agentic coding tool during package development. I develop the underlying statistical approach and initial implementation based on the references below before using these tools to assist with code refinement, debugging, and documentation. AI-generated suggestions are reviewed and tested before incorporation into the package.
 
 ## References
 ### Limits of agreement

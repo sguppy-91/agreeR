@@ -4,6 +4,7 @@ Version: 0.1.0
 Authors@R: 
     person(given = "Stuart",
     family = "Guppy",
+    comment = c(ORCID = "https://orcid.org/0000-0001-9209-7409"),
     email = "sguppy-91@users.noreply.github.com",
     role = c("aut", "cre", "cph"))
 Description: Estimates agreement between two measurement methods using
@@ -14,6 +15,7 @@ Description: Estimates agreement between two measurement methods using
   assumptions.
 License: MIT + file LICENSE
 Encoding: UTF-8
+Depends: R (>=4.1)
 Imports:
     boot,
     purrr,

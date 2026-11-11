@@ -35,10 +35,10 @@ method:
 ```{r data}
 set.seed(123)
 n <- 40
-sim_data <- rnorm(n, mean = 100, sd = 10)
+sim <- rnorm(n, mean = 100, sd = 10)
 dat <- data.frame(
-  reference = sim_data + rnorm(n, 2, 1),
-  comparison = sim_data + rnorm(n, 5, 3)
+  reference = sim + rnorm(n, 2, 1),
+  comparison = sim + rnorm(n, 5, 3)
 )
 head(dat)
 ```
