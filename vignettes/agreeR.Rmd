@@ -16,7 +16,7 @@ library(agreeR)
 
 `agreeR` provides a reproducible workflow for agreement analysis in
 method comparison studies with a single measurement per participant per
-method:
+measurement:
 
 - `ba_loa()`: Bland-Altman mean bias and limits of agreement
 - `olp()`: ordinary least products (OLP) regression
