@@ -11,7 +11,7 @@ agreeR provides a reproducible workflow for:
 - Limits of agreement
 - Ordinary least products regression
 - Equivalence tests
-- Bootstrap confidence intervals
+- Bootstrap confidence intervals (both percentile & bias corrected and accelerated)
 
 Additional functionality will be added as future research needs arise.
 
