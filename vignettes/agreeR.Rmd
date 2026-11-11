@@ -1,0 +1,92 @@
+---
+title: "Introduction to agreeR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to agreeR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
+library(agreeR)
+```
+
+## Overview
+
+`agreeR` provides a reproducible workflow for agreement analysis in
+method comparison studies with a single measurement per participant per
+method:
+
+- `ba_loa()`: Bland-Altman mean bias and limits of agreement
+- `olp()`: ordinary least products (OLP) regression
+- `equiv_test()`: equivalence testing via the two one-sided tests (TOST)
+  procedure
+
+All three functions return a tibble of point estimates with bootstrap
+confidence intervals (BCa by default; `ci_type = "perc"` for percentile
+intervals).
+
+## Example data
+
+We simulate paired measurements from a reference device and a comparison
+method:
+
+```{r data}
+set.seed(123)
+n <- 40
+sim_data <- rnorm(n, mean = 100, sd = 10)
+dat <- data.frame(
+  reference = sim_data + rnorm(n, 2, 1),
+  comparison = sim_data + rnorm(n, 5, 3)
+)
+head(dat)
+```
+
+## Limits of agreement
+
+```{r ba}
+set.seed(123)
+ba_loa(dat, reference = "reference", comparison = "comparison")
+```
+
+## Ordinary least products regression
+
+The OLP slope is the ratio of the standard deviations of the two methods,
+`b = s_y / s_x` (Ludbrook, 2012), with the intercept chosen so the
+line passes through the point of means.
+
+```{r olp}
+set.seed(123)
+olp(dat, reference = "reference", comparison = "comparison")
+```
+
+## Equivalence testing
+
+Equivalence is declared when the bootstrap confidence interval for the mean
+difference lies entirely within pre-specified equivalence bounds. A 90%
+interval (the default `conf = 0.90`) corresponds to 5% type I error per
+one-sided test.
+
+```{r equiv}
+set.seed(123)
+equiv_test(
+  dat,
+  reference = "reference",
+  comparison = "comparison",
+  lower = -5,
+  upper = 5
+)
+```
+
+## References
+
+- Bland, J. M., & Altman, D. G. (1986). Statistical methods for assessing
+  agreement between two methods of clinical measurement. *Lancet*, *327*(8476),
+  307-310.
+- Ludbrook, J. (2012). A primer for biomedical scientists on how to execute
+  Model II linear regression analysis. *Clinical and Experimental Pharmacology
+  and Physiology*, *39*(4), 329-335.
+- Dixon, P. M., Saint-Maurice, P. F., Kim, Y., Hibbing, P., Bai, Y., & Welk, G. J.
+  (2018). A primer on the use of equivalence testing for evaluating measurement
+  agreement. *Medicine and Science in Sports and Exercise*, *50*(4), 837-845.

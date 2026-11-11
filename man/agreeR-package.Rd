@@ -12,6 +12,7 @@ Estimates agreement between two measurement methods using Bland-Altman limits of
 Useful links:
 \itemize{
   \item \url{https://github.com/sguppy-91/agreeR}
+  \item Report bugs at \url{https://github.com/sguppy-91/agreeR/issues}
 }
 
 }

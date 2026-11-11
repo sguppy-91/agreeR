@@ -16,6 +16,28 @@
 #' @return A tibble with one row per estimate (mean bias, lower LoA, upper LoA)
 #'   giving the point estimate and its confidence interval.
 #'
+#' @references
+#' Bland, J. M., & Altman, D. G. (1986). Statistical methods for assessing
+#'  agreement between two methods of clinical measurement. *Lancet*, *327*(8476),
+#'  307-310.
+#'
+#' Bland, J. M., & Altman, D. G. (2007). Agreement between methods of measurement
+#'  with multiple observations per individual. *Journal of Biopharmaceutical
+#'  Statistics*, *17*(4), 571-582.
+#'
+#' @examples
+#' set.seed(123)
+#' n <- 40
+#' method_a <- rnorm(n, 50, 5)
+#' method_b <- method_a + rnorm(n, 1, 1)
+#' dat <- data.frame(a = method_a, b = method_b)
+#'
+#' # 95% limits of agreement with BCa bootstrap confidence intervals
+#' ba_loa(dat, reference = "a", comparison = "b")
+#'
+#' # Percentile intervals instead of BCa
+#' ba_loa(dat, reference = "a", comparison = "b", ci_type = "perc")
+#'
 #' @export
 ba_loa <- function(
   data,

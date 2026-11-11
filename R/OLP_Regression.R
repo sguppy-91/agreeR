@@ -13,6 +13,35 @@
 #' @param ci_type Type of bootstrap confidence interval: `"perc"` (percentile) or `"bca"`
 #'   (bias-corrected and accelerated, the default), passed to [boot::boot.ci()].
 #' @return A tibble with one row per parameter (slope, intercept) giving the point estimate and its confidence interval.
+#'
+#' @details
+#' The OLP slope is estimated as the ratio of the standard deviations of the two
+#' methods, `b = s_y / s_x`. The intercept is `a = mean(y) - b * mean(x)`, so the
+#' line passes through the point of means `(mean(x), mean(y))`. This follows
+#' Ludbrook (2012), equation 1.
+#'
+#' @references
+#' Ludbrook, J. (2012). A primer for biomedical scientists on how to execute
+#'  Model II linear regression analysis. *Clinical and Experimental Pharmacology
+#'  and Physiology*, *39*(4), 329-335.
+#'
+#' Ludbrook, J. (2002). Statistical techniques for comparing measurers and methods
+#'  of measurement: a critical review. *Clinical and Experimental Pharmacology
+#'  and Physiology*, *29*(7), 527-536.
+#'
+#' @examples
+#' set.seed(123)
+#' n <- 40
+#' method_b <- rnorm(n, 100, 10)
+#' method_a <- 5 + 0.9 * method_b + rnorm(n, 0, 3)
+#' dat <- data.frame(a = method_a, b = method_b)
+#'
+#' # OLP slope and intercept with BCa bootstrap confidence intervals
+#' olp(dat, reference = "a", comparison = "b")
+#'
+#' # Percentile intervals instead of BCa
+#' olp(dat, reference = "a", comparison = "b", ci_type = "perc")
+#'
 #' @export
 olp <- function(
   data,
@@ -39,7 +68,7 @@ olp <- function(
   stat <- function(d, i) {
     x <- d$x[i]
     y <- d$y[i]
-    slope <- sd(y) / sd(x)
+    slope <- stats::sd(y) / stats::sd(x)
     intercept <- mean(y) - slope * mean(x)
     c(slope = slope, intercept = intercept)
   }

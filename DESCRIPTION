@@ -12,11 +12,10 @@ Description: Estimates agreement between two measurement methods using
   per-subject method comparison studies common in sport and exercise
   science. Not yet extensively validated; use with care and check
   assumptions.
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 Imports:
     boot,
-    dplyr,
     purrr,
     tidyr,
     tibble
@@ -26,6 +25,7 @@ Suggests:
     knitr,
     rmarkdown
 URL: https://github.com/sguppy-91/agreeR
+BugReports: https://github.com/sguppy-91/agreeR/issues
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 Config/roxygen2/version: 8.1.1

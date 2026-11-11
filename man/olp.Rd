@@ -38,3 +38,32 @@ Computes the ordinary least products regression slope and intercept
 between two measurement methods, together with bias-corrected and accelerated (BCa)
 bootstrap confidence intervals for each parameter estimate
 }
+\details{
+The OLP slope is estimated as the ratio of the standard deviations of the two
+methods, \code{b = s_y / s_x}. The intercept is \code{a = mean(y) - b * mean(x)}, so the
+line passes through the point of means \verb{(mean(x), mean(y))}. This follows
+Ludbrook (2012), equation 1.
+}
+\examples{
+set.seed(123)
+n <- 40
+method_b <- rnorm(n, 100, 10)
+method_a <- 5 + 0.9 * method_b + rnorm(n, 0, 3)
+dat <- data.frame(a = method_a, b = method_b)
+
+# OLP slope and intercept with BCa bootstrap confidence intervals
+olp(dat, reference = "a", comparison = "b")
+
+# Percentile intervals instead of BCa
+olp(dat, reference = "a", comparison = "b", ci_type = "perc")
+
+}
+\references{
+Ludbrook, J. (2012). A primer for biomedical scientists on how to execute
+Model II linear regression analysis. \emph{Clinical and Experimental Pharmacology
+and Physiology}, \emph{39}(4), 329-335.
+
+Ludbrook, J. (2002). Statistical techniques for comparing measurers and methods
+of measurement: a critical review. \emph{Clinical and Experimental Pharmacology
+and Physiology}, \emph{29}(7), 527-536.
+}

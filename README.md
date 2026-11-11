@@ -1,6 +1,7 @@
-README.md
-
 # agreeR: Agreement analyses for method comparison studies
+
+[![R-CMD-check](https://github.com/sguppy-91/agreeR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/sguppy-91/agreeR/actions/workflows/R-CMD-check.yaml)
+
 agreeR is a personal R package that automates the statistical workflows I commonly use during my research investigating measurement validity in sport and exercise science.
 
 The package was developed to reduce the need to repeatedly write custom code for common agreement analyses across projects. Development is guided by the practical requirements of my own research rather than by the goal of creating a general-purpose statistical package. 
@@ -22,6 +23,18 @@ pak::pak("sguppy-91/agreeR")
 ## Example
 ```r
 library(agreeR)
+
+# Simulated paired measurements from a reference device and comparison methods
+set.seed(123)
+n <- 40
+latent <- rnorm(n, mean = 100, sd = 10)
+data <- data.frame(
+  force_plate = latent + rnorm(n, 2, 1),
+  smartphone  = latent + rnorm(n, 5, 3),
+  jump_mat    = latent + rnorm(n, -1, 2),
+  mocap       = latent + rnorm(n, 0, 0.5),
+  LPT         = latent + rnorm(n, 0.1, 0.4)
+)
 
 # Limits of agreement with bias corrected and accelerated 95% confidence intervals 
 set.seed(123)
@@ -63,7 +76,7 @@ results
 agreeR is under active development and should be considered experimental software as a result. Although the methods included in the package have been checked against the source literature outlined below, the package has been developed for my own research workflows and may contain implementation errors. Any use of the package should include independently verifying that the methods and results are appropriate for their application and consistent with the relevant source literature.
 
 ## AI Disclosure
-I use generative AI (Mistral Large 4, Mistral AI; GLM 5.3, Z.ai, hosted by Mistral) as an agentic coding tool during package development. I develop the underlying statistical approach and initial implementation based on the references below before using these tools to assist with code refinement and debugging as well as documentation. AI-generated suggestions are reviewed and tested before incorporation into the package.
+I use generative AI (Mistral Large 4, Mistral AI; GLM 5.3, Z.ai, hosted by Mistral) as an agentic coding tool during package development. I develop the underlying statistical approach and initial implementation based on the references below before using these tools to assist with code refinement, debugging, and documentation. AI-generated suggestions are reviewed and tested before incorporation into the package.
 
 ## References
 ### Limits of agreement
