@@ -15,7 +15,7 @@ Description: Estimates agreement between two measurement methods using
   assumptions.
 License: MIT + file LICENSE
 Encoding: UTF-8
-Depends: R (>=4.1)
+Depends: R (>= 4.1)
 Imports:
     boot,
     purrr,
