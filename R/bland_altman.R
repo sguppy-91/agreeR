@@ -46,7 +46,7 @@ ba_loa <- function(
   conf = 0.95,
   R = 2000,
   na_rm = TRUE,
-  ci_type = "bca"
+  ci_type = c("perc", "bca")
 ) {
   df <- tidyr::tibble(
     difference = data[[reference]] - data[[comparison]]
@@ -76,7 +76,9 @@ ba_loa <- function(
   boot_out <- boot::boot(df, statistic = stat, R = R)
 
   purrr::map(seq_along(boot_out$t0), \(i) {
-    b <- boot::boot.ci(boot_out, type = ci_type, conf = conf, index = i)[[ci_component]][4:5]
+    b <- boot::boot.ci(boot_out, type = ci_type, conf = conf, index = i)[[
+      ci_component
+    ]][4:5]
     tidyr::tibble(
       metric = names(boot_out$t0)[[i]],
       estimate = unname(boot_out$t0)[[i]],

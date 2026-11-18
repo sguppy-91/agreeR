@@ -11,7 +11,7 @@ olp(
   conf = 0.95,
   R = 2000,
   na_rm = TRUE,
-  ci_type = "bca"
+  ci_type = c("perc", "bca")
 )
 }
 \arguments{
@@ -52,7 +52,7 @@ method_a <- 5 + 0.9 * method_b + rnorm(n, 0, 3)
 dat <- data.frame(a = method_a, b = method_b)
 
 # OLP slope and intercept with BCa bootstrap confidence intervals
-olp(dat, reference = "a", comparison = "b")
+olp(dat, reference = "a", comparison = "b", ci_type = "bca")
 
 # Percentile intervals instead of BCa
 olp(dat, reference = "a", comparison = "b", ci_type = "perc")

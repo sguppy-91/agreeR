@@ -11,7 +11,7 @@ ba_loa(
   conf = 0.95,
   R = 2000,
   na_rm = TRUE,
-  ci_type = "bca"
+  ci_type = c("perc", "bca")
 )
 }
 \arguments{

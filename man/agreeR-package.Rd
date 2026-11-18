@@ -17,11 +17,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Stuart Guppy \email{sguppy-91@users.noreply.github.com} [copyright holder]
+\strong{Maintainer}: Stuart Guppy \email{sguppy-91@users.noreply.github.com} (\href{https://orcid.org/0000-0001-9209-7409}{ORCID}) [copyright holder]
 
 Authors:
 \itemize{
-  \item Stuart Guppy \email{sguppy-91@users.noreply.github.com} [copyright holder]
+  \item Stuart Guppy \email{sguppy-91@users.noreply.github.com} (\href{https://orcid.org/0000-0001-9209-7409}{ORCID}) [copyright holder]
 }
 
 }

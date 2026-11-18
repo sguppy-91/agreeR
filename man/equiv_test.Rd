@@ -13,7 +13,7 @@ equiv_test(
   conf = 0.9,
   R = 2000,
   na_rm = TRUE,
-  ci_type = "bca"
+  ci_type = c("perc", "bca")
 )
 }
 \arguments{
@@ -76,10 +76,10 @@ method_b <- method_a + rnorm(n, 0, 1)
 dat <- data.frame(a = method_a, b = method_b)
 
 # Bounds of +/- 1 unit: equivalence is supported
-equiv_test(dat, reference = "a", comparison = "b", lower = -1, upper = 1)
+equiv_test(dat, reference = "a", comparison = "b", lower = -1, upper = 1, ci_type = "bca")
 
 # Bounds of +/- 0.1 units: equivalence is not supported
-equiv_test(dat, reference = "a", comparison = "b", lower = -0.1, upper = 0.1)
+equiv_test(dat, reference = "a", comparison = "b", lower = -0.1, upper = 0.1, ci_type = "bca")
 
 # Percentile intervals instead of BCa
 equiv_test(dat, reference = "a", comparison = "b", lower = -1, upper = 1,

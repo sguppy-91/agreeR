@@ -37,7 +37,7 @@
 #' dat <- data.frame(a = method_a, b = method_b)
 #'
 #' # OLP slope and intercept with BCa bootstrap confidence intervals
-#' olp(dat, reference = "a", comparison = "b")
+#' olp(dat, reference = "a", comparison = "b", ci_type = "bca")
 #'
 #' # Percentile intervals instead of BCa
 #' olp(dat, reference = "a", comparison = "b", ci_type = "perc")
@@ -50,7 +50,7 @@ olp <- function(
   conf = 0.95,
   R = 2000,
   na_rm = TRUE,
-  ci_type = "bca"
+  ci_type = c("perc", "bca")
 ) {
   df <- tidyr::tibble(
     y = data[[reference]],
@@ -76,7 +76,9 @@ olp <- function(
   boot_out <- boot::boot(df, statistic = stat, R = R)
 
   purrr::map(seq_along(boot_out$t0), \(i) {
-    b <- boot::boot.ci(boot_out, type = ci_type, conf = conf, index = i)[[ci_component]][4:5]
+    b <- boot::boot.ci(boot_out, type = ci_type, conf = conf, index = i)[[
+      ci_component
+    ]][4:5]
     tidyr::tibble(
       parameter = names(boot_out$t0)[[i]],
       estimate = unname(boot_out$t0)[[i]],
