@@ -81,7 +81,7 @@ I use generative AI (Mistral Large 4, Mistral AI) as an agentic coding tool duri
 ## References
 ### Limits of agreement
 - Bland, J. M., & Altman, D. G. (1986). Statistical methods for assessing agreement between two methods of clinical measurement. _Lancet_, _327_(8476), 307-310
-- Bland, J. M., & Altman, D. G. (1999). Measuring agreement in method comparison studies. _Statistical methods in medical research_, _8_(2), 135-160.
+- Bland, J. M., & Altman, D. G. (1999). Measuring agreement in method comparison studies. _Statistical Methods in Medical Research_, _8_(2), 135-160.
 
 ### Ordinary least products regression
 - Ludbrook, J. (1997). Comparing methods of measurement. _Clinical and Experimental Pharmacology and Physiology_, _24_(2), 193-203.
