@@ -52,7 +52,7 @@ centile_loa <- function(
     df <- tidyr::drop_na(df)
   }
 
-  ci_type <- match.arg(ci_type, c("perc", "bca"))
+  ci_type <- match.arg(ci_type)
   # boot.ci names its result component "percent" for type "perc"
   ci_component <- switch(ci_type, perc = "percent", bca = "bca")
 
